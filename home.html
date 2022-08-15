@@ -1,0 +1,40 @@
+#Creating home page
+#Create a Dictnory,inside dict Create Tempulate Inside that create a HTML File
+#Im Using PYCHARM IDE
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>YemYES Technologies</title>
+    </head>
+    <body>
+    <center>
+            <h1>User Management Using python Flask & MySQL</h1>
+            <p><a href="{{url_for('addUsers')}}">Add Users</a></p>
+
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>AGE</th>
+                    <th>CITY</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
+                </tr>
+                {% for data in datas %}
+                <tr>
+                    <td>{{data.ID}}</td>
+                    <td>{{data.NAME}}</td>
+                    <td>{{data.AGE}}</td>
+                    <td>{{data.CITY}}</td>
+                    <td><a href="{{url_for('editUser', id=data.ID)}}">Edit</a></td>
+                    <td><a onclick="return confirm('Are you sure to delete');" href="{{url_for('deleteUser',id=data.ID)}}"></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            </center>
+
+
+</body>
+</html>
